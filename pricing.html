@@ -30,8 +30,8 @@
       flex-wrap: wrap;
     }
     .card {
-      width: 260px;
-      height: 320px;
+      width: 280px;
+      height: 380px;
       background: #222;
       border-radius: 16px;
       color: #fff;
@@ -39,16 +39,24 @@
       flex-direction: column;
       align-items: center;
       justify-content: flex-start;
-      padding: 2rem 1.2rem 1.2rem 1.2rem;
+      padding: 2rem 1.5rem 1.5rem 1.5rem;
       font-size: 1.1rem;
       margin-bottom: 2.5rem;
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
     }
     .card.center {
       background: linear-gradient(180deg, #4ea1ff 0%, #ffe066 100%);
       color: #222;
       border-radius: 24px;
       font-weight: 600;
+      transform: scale(1.05);
+    }
+    .card.center:hover {
+      transform: scale(1.05) translateY(-5px);
     }
     .card-title {
       font-size: 1.5rem;
@@ -63,15 +71,51 @@
     .card-sub {
       font-size: 1.1rem;
       margin-bottom: 1.2rem;
+      text-align: center;
     }
     .card-list {
       text-align: left;
       margin: 0;
       padding: 0 0 0 1.2rem;
       font-size: 1.05rem;
+      list-style: none;
     }
     .card-list li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .card-list li:before {
+      content: "•";
+      color: #4ea1ff;
+      font-weight: bold;
+    }
+    .card.center .card-list li:before {
+      color: #2266ff;
+    }
+    .footnote {
+      font-size: 0.8rem;
+      color: #666;
+      text-align: center;
+      margin-top: 1rem;
+      font-style: italic;
+    }
+    .trial-badge {
+      background: #2266ff;
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .popular-badge {
+      background: #ffe066;
+      color: #222;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
     }
     .footer-nav {
       position: fixed;
@@ -128,7 +172,7 @@
   <nav class="footer-nav">
     <span class="logo">First</span>
     <div class="nav-links">
-      <a href="page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="features.html">Features</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="pricing.html">Pricing</a>
@@ -137,34 +181,42 @@
   <h1>Pricing</h1>
   <div class="card-row">
     <div class="card">
-      <div class="card-title">First</div>
-      <div class="card-price">$0</div>
-      <div class="card-sub">Free</div>
+      <div class="card-title">Lifetime</div>
+      <div class="card-price">$20</div>
+      <div class="card-sub">One-time payment</div>
       <ul class="card-list">
-        <li>Limited block sessions</li>
-        <li>Limited sharing</li>
+        <li>All premium features</li>
+        <li>Lifetime updates</li>
+        <li>Priority support</li>
+        <li>Early access to new features</li>
+        <li>No recurring payments</li>
       </ul>
     </div>
     <div class="card center">
-      <div class="card-title">First <span style='color:#2266ff'>Pro</span></div>
+      <div class="popular-badge">Most Popular</div>
+      <div class="card-title">Monthly</div>
+      <div class="trial-badge">3-Day Free Trial</div>
       <div class="card-price">$3.99</div>
       <div class="card-sub">per month</div>
       <ul class="card-list">
-        <li>Unlimited block sessions</li>
-        <li>Unlimited sharing</li>
+        <li>All premium features</li>
+        <li>Regular updates</li>
         <li>Priority support</li>
         <li>Early access to new features</li>
+        <li>Cancel anytime</li>
       </ul>
     </div>
     <div class="card">
-      <div class="card-title">First <span style='color:#4ea1ff'>Teams</span></div>
+      <div class="card-title">Enterprise</div>
       <div class="card-price">Custom</div>
+      <div class="card-sub">Coming Soon</div>
       <ul class="card-list">
-        <li>Unlimited block sessions</li>
-        <li>Unlimited sharing</li>
-        <li>Priority support</li>
+        <li>Custom pricing for your team</li>
+        <li>Custom integrations and features*</li>
         <li>Early access to new features</li>
+        <li>24/7 dedicated support team</li>
       </ul>
+      <div class="footnote">* Upon request</div>
     </div>
   </div>
 </body>

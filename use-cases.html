@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Use Cases</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -23,50 +24,119 @@
       margin-bottom: 2rem;
       text-align: center;
     }
+    .card-container {
+      width: 100%;
+      max-width: 1200px;
+      overflow: hidden;
+      position: relative;
+      padding: 0 2rem;
+      margin-bottom: 6rem;
+    }
     .card-row {
       display: flex;
       gap: 2rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      transition: transform 0.5s ease;
+      padding: 1rem 0;
     }
     .card {
-      width: 320px;
-      height: 160px;
+      min-width: 320px;
       background: #222;
-      border-radius: 12px;
+      border-radius: 16px;
       color: #fff;
+      padding: 2rem;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
-      align-items: flex-start;
-      padding: 1.2rem;
-      font-size: 1.05rem;
-      margin-bottom: 2.5rem;
+      gap: 1rem;
+      transition: transform 0.3s ease;
+      flex-shrink: 0;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card-icon {
+      font-size: 2rem;
+      color: #4ea1ff;
+      margin-bottom: 0.5rem;
     }
     .card-title {
+      font-size: 1.4rem;
       font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .card-subtitle {
       font-size: 1.1rem;
-      margin-bottom: 0.2rem;
       color: #4ea1ff;
-      text-decoration: underline;
+      margin-bottom: 1rem;
     }
-    .card-title.health {
-      color: #fff;
-      text-decoration: underline;
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    .card-title.finance {
+    .feature-list li {
+      margin-bottom: 0.8rem;
+      font-size: 0.95rem;
+      color: #ddd;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .feature-list li:before {
+      content: "•";
       color: #4ea1ff;
-      text-decoration: underline;
+      font-weight: bold;
     }
-    .card-title.dev {
-      color: #4ea1ff;
-      text-decoration: underline;
+    .card-copy {
+      font-size: 0.9rem;
+      color: #ddd;
+      line-height: 1.4;
     }
-    .card-desc {
-      color: #fff;
-      font-size: 0.98rem;
-      font-weight: 400;
-      margin-top: 0.1rem;
+    .nav-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ddd;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .dot.active {
+      background: #4ea1ff;
+    }
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #222;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    .scroll-btn:hover {
+      background: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .scroll-btn.prev {
+      left: 1rem;
+    }
+    .scroll-btn.next {
+      right: 1rem;
     }
     .footer-nav {
       position: fixed;
@@ -123,30 +193,169 @@
   <nav class="footer-nav">
     <span class="logo">First</span>
     <div class="nav-links">
-      <a href="page.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="features.html">Features</a>
       <a href="use-cases.html">Use Cases</a>
       <a href="pricing.html">Pricing</a>
     </div>
   </nav>
   <h1>Use Cases</h1>
-  <div class="card-row">
-    <div class="card">
-      <div class="card-title">Education</div>
-      <div class="card-desc">Manage your time better and improve your study experience</div>
+  <div class="card-container">
+    <button class="scroll-btn prev" onclick="scrollCards('prev')">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="scroll-btn next" onclick="scrollCards('next')">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="card-row">
+      <div class="card">
+        <i class="fas fa-graduation-cap card-icon"></i>
+        <div class="card-title">For Students</div>
+        <div class="card-subtitle">Study with Intention, Share Your Progress</div>
+        <ul class="feature-list">
+          <li>Transform study sessions into distraction-free blocks</li>
+          <li>Verify progress with quick snapshots</li>
+          <li>Build a visual record of your academic journey</li>
+          <li>Perfect for big projects and exam prep</li>
+          <li>Track daily homework completion</li>
+        </ul>
+      </div>
+      <div class="card">
+        <i class="fas fa-dumbbell card-icon"></i>
+        <div class="card-title">For Fitness Enthusiasts</div>
+        <div class="card-subtitle">Commit to Your Workout, Celebrate Every Session</div>
+        <ul class="feature-list">
+          <li>Schedule focused workout time blocks</li>
+          <li>Eliminate phone distractions during exercise</li>
+          <li>Document each completed session</li>
+          <li>Track your fitness journey week by week</li>
+          <li>Share workout progress with friends</li>
+        </ul>
+      </div>
+      <div class="card">
+        <i class="fas fa-briefcase card-icon"></i>
+        <div class="card-title">For Professionals</div>
+        <div class="card-subtitle">Deep Work, Documented Results</div>
+        <ul class="feature-list">
+          <li>Carve out distraction-free work time</li>
+          <li>Block notifications during focus sessions</li>
+          <li>Verify task completion with photos</li>
+          <li>Build a record of accomplishments</li>
+          <li>Perfect for achieving flow state</li>
+        </ul>
+      </div>
+      <div class="card">
+        <i class="fas fa-palette card-icon"></i>
+        <div class="card-title">For Creatives & Hobbyists</div>
+        <div class="card-subtitle">Make Time for Passion Projects</div>
+        <ul class="feature-list">
+          <li>Schedule dedicated creative time blocks</li>
+          <li>Document your creative progress</li>
+          <li>Share your journey with the community</li>
+          <li>Track project milestones</li>
+          <li>Build a portfolio of completed work</li>
+        </ul>
+      </div>
     </div>
-    <div class="card">
-      <div class="card-title health">Health</div>
-      <div class="card-desc">No more skipping gym day; wake up and chase your gains</div>
-    </div>
-    <div class="card">
-      <div class="card-title finance">Business &amp; Finance</div>
-      <div class="card-desc">Time block your productivity, no emails, no texts, just raw focus.</div>
-    </div>
-    <div class="card">
-      <div class="card-title dev">Personal development</div>
-      <div class="card-desc">Focus on your faith and inner peace with morning meditation, afternoon prayer, evening Bible study.</div>
-    </div>
+    <div class="nav-dots"></div>
   </div>
+
+  <script>
+    const cardRow = document.querySelector('.card-row');
+    const cards = document.querySelectorAll('.card');
+    const dotsContainer = document.querySelector('.nav-dots');
+    let currentIndex = 0;
+    let autoScrollInterval;
+    const cardWidth = 320 + 32; // card width + gap
+    const cardsPerView = Math.floor(window.innerWidth / cardWidth);
+    let isScrolling = false;
+
+    // Create dots
+    cards.forEach((_, index) => {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      if (index === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => goToSlide(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.dot');
+
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      if (isScrolling) return;
+      isScrolling = true;
+      currentIndex = index;
+      cardRow.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+      updateDots();
+      setTimeout(() => {
+        isScrolling = false;
+      }, 500); // Match this with the CSS transition duration
+    }
+
+    function scrollCards(direction) {
+      if (isScrolling) return;
+      
+      if (direction === 'next') {
+        if (currentIndex < cards.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0; // Reset to first card only after showing the last one
+        }
+      } else if (direction === 'prev') {
+        if (currentIndex > 0) {
+          currentIndex--;
+        } else {
+          currentIndex = cards.length - 1; // Go to last card when at the beginning
+        }
+      }
+      goToSlide(currentIndex);
+    }
+
+    function startAutoScroll() {
+      autoScrollInterval = setInterval(() => {
+        if (currentIndex < cards.length - 1) {
+          currentIndex++;
+        } else {
+          currentIndex = 0; // Reset to first card only after showing the last one
+        }
+        goToSlide(currentIndex);
+      }, 5000); // Change slide every 5 seconds
+    }
+
+    function stopAutoScroll() {
+      clearInterval(autoScrollInterval);
+    }
+
+    // Start auto-scroll
+    startAutoScroll();
+
+    // Pause auto-scroll on hover
+    cardRow.addEventListener('mouseenter', stopAutoScroll);
+    cardRow.addEventListener('mouseleave', startAutoScroll);
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      const newCardsPerView = Math.floor(window.innerWidth / cardWidth);
+      if (currentIndex > cards.length - 1) {
+        currentIndex = 0;
+        goToSlide(currentIndex);
+      }
+    });
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        scrollCards('prev');
+      } else if (e.key === 'ArrowRight') {
+        scrollCards('next');
+      }
+    });
+  </script>
 </body>
 </html>
